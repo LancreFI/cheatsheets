@@ -1,0 +1,363 @@
+<html>
+        <head>
+                <style>
+                        .topic
+                        {
+                                border: 2px solid #000000;
+                                font-size: 14px;
+                                font-family: Arial;
+                                font-weight: bold;
+                                color: #000000;
+                                background-color: rgba(0, 0, 0, 0.6);
+                        }
+
+                        .terminal
+                        {
+                                border-color: #000000;
+                                border-width: 0 2px 2px 2px;
+                                font-size: 14px;
+                                font-family: monospace;
+                                color: #00FF00;
+                                background-color: rgba(0, 0, 0, 0.8);
+                        }
+
+						pre
+						{
+								margin: 0;
+								padding: 0;
+								line-height: normal;
+								font-family: monospace;
+								font-size: 14px;
+						}
+			
+						.small
+						{
+								font-size: 12px;
+								background-color: #000000;
+								color: #FFFFFF;
+								font-weight: semibold;
+								font-family: monospace;
+						}
+
+						a:link, a:visited, a:hover, a:active
+						{
+								text-decoration: underline;
+								color: #007700;
+								margin-left: 20px;
+								font-weight: 600;
+						}
+
+                </style>
+        </head>
+        <body>
+
+		<div class="topic">
+			<h4>#APPLIES ON MY OWN SETUP</h4>
+			--plugins=/full/path/to/plugins/ (ie. /home/user/tools/volatility/plugins/)<br/>
+			-f /full/path/to/filetoanalyze (ie. /home/user/tools/volatility/memdump.dmp)<br/><br/>
+		</div>
+		<div class="terminal">
+			<div class="small">volatility --plugins=/home/user/tools/volatility/plugins/ --profile=WinXPSP2x86 -f /home/user/tools/volatility/memdump.bin chromehistory</div>
+		</div>
+		<br/>
+		<div class="topic">
+			<h4>#PROFILES</h4><br/>
+			<a href="https://github.com/volatilityfoundation/profiles" target="_blank">https://github.com/volatilityfoundation/profiles</a><br/>
+			<li>Linux profiles to /home/user/tools/volatility/plugins/overlays/linux/ and <br/>
+			Macprofiles to /home/user/tools/volatility/plugins/overlays/mac/.</li>
+			<li>Located in /home/user/tools/volatility/nix_mac_profiles/profiles/</li>
+		</div>
+		<div class="terminal">
+			<pre>
+Builtins:
+VistaSP0x64		- A Profile for Windows Vista SP0 x64
+VistaSP0x86 		- A Profile for Windows Vista SP0 x86
+VistaSP1x64 		- A Profile for Windows Vista SP1 x64
+VistaSP1x86 		- A Profile for Windows Vista SP1 x86
+VistaSP2x64 		- A Profile for Windows Vista SP2 x64
+VistaSP2x86 		- A Profile for Windows Vista SP2 x86
+Win10x64 		- A Profile for Windows 10 x64
+Win10x64_10586 		- A Profile for Windows 10 x64 (10.0.10586.306 / 2016-04-23)
+Win10x64_14393 		- A Profile for Windows 10 x64 (10.0.14393.0 / 2016-07-16)
+Win10x64_15063 		- A Profile for Windows 10 x64 (10.0.15063.0 / 2017-04-04)
+Win10x86 		- A Profile for Windows 10 x86
+Win10x86_10586 		- A Profile for Windows 10 x86 (10.0.10586.420 / 2016-05-28)
+Win10x86_14393 		- A Profile for Windows 10 x86 (10.0.14393.0 / 2016-07-16)
+Win10x86_15063 		- A Profile for Windows 10 x86 (10.0.15063.0 / 2017-04-04)
+Win2003SP0x86 		- A Profile for Windows 2003 SP0 x86
+Win2003SP1x64 		- A Profile for Windows 2003 SP1 x64
+Win2003SP1x86 		- A Profile for Windows 2003 SP1 x86
+Win2003SP2x64 		- A Profile for Windows 2003 SP2 x64
+Win2003SP2x86 		- A Profile for Windows 2003 SP2 x86
+Win2008R2SP0x64 	- A Profile for Windows 2008 R2 SP0 x64
+Win2008R2SP1x64		- A Profile for Windows 2008 R2 SP1 x64
+Win2008R2SP1x64_23418	- A Profile for Windows 2008 R2 SP1 x64 (6.1.7601.23418 / 2016-04-09)
+Win2008SP1x64 		- A Profile for Windows 2008 SP1 x64
+Win2008SP1x86 		- A Profile for Windows 2008 SP1 x86
+Win2008SP2x64		- A Profile for Windows 2008 SP2 x64
+Win2008SP2x86 		- A Profile for Windows 2008 SP2 x86
+Win2012R2x64		- A Profile for Windows Server 2012 R2 x64
+Win2012R2x64_18340 	- A Profile for Windows Server 2012 R2 x64 (6.3.9600.18340 / 2016-05-13)
+Win2012x64 		- A Profile for Windows Server 2012 x64
+Win2016x64_14393 	- A Profile for Windows Server 2016 x64 (10.0.14393.0 / 2016-07-16)
+Win7SP0x64 		- A Profile for Windows 7 SP0 x64
+Win7SP0x86 		- A Profile for Windows 7 SP0 x86
+Win7SP1x64 		- A Profile for Windows 7 SP1 x64
+Win7SP1x64_23418 	- A Profile for Windows 7 SP1 x64 (6.1.7601.23418 / 2016-04-09)
+Win7SP1x86 		- A Profile for Windows 7 SP1 x86
+Win7SP1x86_23418 	- A Profile for Windows 7 SP1 x86 (6.1.7601.23418 / 2016-04-09)
+Win81U1x64 		- A Profile for Windows 8.1 Update 1 x64
+Win81U1x86 		- A Profile for Windows 8.1 Update 1 x86
+Win8SP0x64 		- A Profile for Windows 8 x64
+Win8SP0x86 		- A Profile for Windows 8 x86
+Win8SP1x64 		- A Profile for Windows 8.1 x64
+Win8SP1x64_18340 	- A Profile for Windows 8.1 x64 (6.3.9600.18340 / 2016-05-13)
+Win8SP1x86 		- A Profile for Windows 8.1 x86
+WinXPSP1x64 		- A Profile for Windows XP SP1 x64
+WinXPSP2x64		- A Profile for Windows XP SP2 x64
+WinXPSP2x86 		- A Profile for Windows XP SP2 x86
+WinXPSP3x86 		- A Profile for Windows XP SP3 x86
+</pre>
+		</div>
+		<br/>
+		<div class="topic">
+			<h4>#3RD PARTY PLUGINS</h4>
+		</div>
+		<div class="topic">elfdump.py (/plugins/linux_elf_dump/)</div>
+		<div class="terminal">
+			<a href="https://github.com/ecanzonieri/ElfDump" target="_blank">https://github.com/ecanzonieri/ElfDump</a><br/>
+			<pre>
+	Elfdump is a volatility plug-in to dump elf executables from memory dump.
+	-p PID 		Operate on these Process IDs (comma-separated)
+	-D Directory	Output directory
+	*To execute the dumped elf it is necessary to set the environment variable LD_BIND_NOW=1, 
+	in order to force the dynamic linker to process all relocation before transferring control to the 
+	program (no lazy relocation).
+</pre>
+		</div>
+		<div class="topic">apihooksdeep.py</div>
+		<div class="terminal">
+			<a href="https://github.com/superponible/volatility-plugins/blob/master/apihooksdeep.py" target="_blank">https://github.com/superponible/volatility-plugins/blob/master/apihooksdeep.py</a><br/>
+			<pre>
+	Detect API hooks in process and kernel memory, with ssdeep for whitelisting
+</pre>
+		</div>
+		<div class="topic">chromehistory.py</div>
+		<div class="terminal">
+			<a href="http://blog.superponible.com/2014/08/31/volatility-plugin-chrome-history/" target="_blank">http://blog.superponible.com/2014/08/31/volatility-plugin-chrome-history/</a><br/>
+			<pre>
+	Get Chrome history data
+</pre>
+			<pre class="small">
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromehistory
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromevisits -Q   (quick)
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromevisits      (full)
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromesearchterms
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromedownloads
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromedownloads --output=csv
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromedownloads --output=body
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromedownloadchains
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp chromecookies | more
+	  volatility --profile=MacMavericks_10_9_4_AMDx64 -f mem.macho chromecookies
+	  volatility --profile=MacMavericks_10_9_4_AMDx64 -f mem.macho chromecookies -K "rq2uadV+VvAD+IBiBeJ75a=="
+</pre>
+		</div>
+		<div class="topic">ethscan.py</div>
+		<div class="terminal">
+			<a href="https://github.com/byt3bl33d3r/jamaal-re-tools/blob/master/volplugins/ethscan.py" target="_blank">https://github.com/byt3bl33d3r/jamaal-re-tools/blob/master/volplugins/ethscan.py</a><br/>
+			<pre>
+	Recover ethernet packets from memory
+	Packets found in memory can be saved as individual raw binary files or each packet 
+	will be saved to a pcap file.
+</pre>
+		<pre class="small">	  volatility --plugins=/path/to/plugins/ ethscan -f be2.vmem -F 0x0800 -S -M 1500 -P -R -D ethscan_dump/</pre>
+		</div>
+		<div class="topic">firefoxhistory.py</div>
+		<div class="terminal">
+			<a href="http://blog.superponible.com/2014/08/31/volatility-plugin-firefox-history/" target="_blank">http://blog.superponible.com/2014/08/31/volatility-plugin-firefox-history/</a><br/>
+			<pre>
+	Get Firefox history data
+</pre>
+			<pre class="small">
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp firefoxhistory
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp firefoxcookies | more
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp firefoxdownloads
+</pre>
+		</div>
+		<div class="topic">idxparser.py</div>
+		<div class="terminal">
+			<a href="https://blog.superponible.com/2014/08/31/volatility-plugin-java-idx-parser/" target="_blank">https://blog.superponible.com/2014/08/31/volatility-plugin-java-idx-parser/</a><br/>
+			<pre>
+	Find IDX files in memory
+</pre>
+			<pre class="small">
+	  volatility --plugins=/path/to/plugins/ -f sample.idx idxparser
+	  volatility --plugins=/path/to/plugins/ -f voltest.dmp idxparser
+</pre>
+		</div>
+		<div class="topic">malfinddeep.py</div>
+		<div class="terminal">
+			<a href="https://github.com/superponible/volatility-plugins/blob/master/malfinddeep.py" target="_blank">https://github.com/superponible/volatility-plugins/blob/master/malfinddeep.py</a><br/>
+			<pre>
+	Find hidden and injected code, whitelist with ssdeep hashes
+</pre>
+		</div>
+		<div class="topic">mimikatz.py</div>
+		<div class="terminal">
+			<a href="https://github.com/volatilityfoundation/community/blob/master/FrancescoPicasso/mimikatz.py" target="_blank">https://github.com/volatilityfoundation/community/blob/master/FrancescoPicasso/mimikatz.py</a><br/>
+			<pre>
+	Run Mimikatz on the dump
+	Based on the research made by Gentil_Kiwi for his mimikatz
+	http://blog.gentilkiwi.com/mimikatz
+</pre>
+		</div>
+		<div class="topic">netscan.py</div>
+		<div class="terminal">
+			<a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference#netscan" taget="_blank">https://github.com/volatilityfoundation/volatility/wiki/Command-Reference#netscan</a><br/>
+			<pre>
+	Scan for network connections 
+</pre> 
+		</div> 
+		<div class="topic">prefetch.py</div> 
+		<div class="terminal"> 
+			<a href="https://blog.superponible.com/volatility/" target="_blank">https://blog.superponible.com/volatility/</a><br/>
+			<pre>
+	Extract prefect data from a memory dump, mainly first and last execution time 
+</pre>
+		</div> 
+		<div class="topic">sqlite_help.py</div> 
+		<div class="terminal"> 
+			<a href="https://github.com/superponible/volatility-plugins/blob/master/sqlite_help.py" target="_blank">https://github.com/superponible/volatility-plugins/blob/master/sqlite_help.py</a><br/>
+			<pre>
+	Helper functions for working with a SQLite database
+</pre>
+		</div>
+		<div class="topic">ssdeepscan.py</div>
+		<div class="terminal">
+			<a href="https://blog.superponible.com/2014/08/30/volatility-plugin-ssdeep-for-malfind-and-apihooks/" target="_blank">https://blog.superponible.com/2014/08/30/volatility-plugin-ssdeep-for-malfind-and-apihooks/</a><br/>
+			<pre>
+	ssdeep â€“ http://ssdeep.sourceforge.net/ â€“ This was tested with the 2.11.1 version of ssdeep. 
+	A standard ./configure; make; sudo make install is all thatâ€™s needed.
+	pydeep â€“ https://github.com/kbandla/pydeep â€“ Also a standard python setup.py build; sudo 
+	python setup.py install is all thatâ€™s necessary.
+</pre>
+		</div>
+		<div class="topic">trustrecords.py</div>
+		<div class="terminal">
+			<a href="https://blog.superponible.com/2014/08/30/volatility-plugin-office-trust-records/" target="_blank">https://blog.superponible.com/2014/08/30/volatility-plugin-office-trust-records/</a><br/>
+			<pre>
+	Query the memory for Office trust records
+</pre>
+		</div>
+		<div class="topic">uninstallinfo.py</div>
+		<div class="terminal">
+			<a href="https://github.com/superponible/volatility-plugins/blob/master/uninstallinfo.py" target="_blank">https://github.com/superponible/volatility-plugins/blob/master/uninstallinfo.py</a><br/>
+			<pre>
+	Extract installed software info from Uninstall registry key
+	Dumps the DisplayName values in HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall
+	in a memory dump to view installed software and patches
+</pre>
+		</div>
+		<div class="topic">shimcachemem.py</div>
+		<div class="terminal">
+			<a href="https://github.com/fireeye/Volatility-Plugins/blob/master/shimcachemem/shimcachemem.py" target="_blank">https://github.com/fireeye/Volatility-Plugins/blob/master/shimcachemem/shimcachemem.py</a><br/>
+			<pre>
+	Parse shim cache, useful for determining the timeline of program executions
+</pre>
+		</div>
+		<div class="topic">openvpn.py + rsakey.py</div>
+		<div class="terminal">
+			<a href="https://github.com/Phaeilo/vol-openvpn" target="_blank">https://github.com/Phaeilo/vol-openvpn</a><br/>
+			<pre>
+	A plugin for Volatility that can extract credentials from the memory of an OpenVPN process. The 
+	username and password entered by the user, as well as passwords entered to unlock a private key can be 
+	recovered. 
+	*OpenVPN's --auth-nocache flag must not be set. The plugin supports OpenVPN 2.X.X on Windows. 
+	*It was successfully tested with OpenVPN 2.2.2, 2.3.2 and 2.3.4 on Windows XP (x86) and 
+	Windows 7 (x86 & x64).
+	The rsakey.py is a small plugin to extract base64/PEM encoded RSA private keys from memory.
+</pre>
+		</div>
+		<div class="topic">bitlocker.py</div>
+		<div class="terminal">
+			<a href="https://github.com/elceef/bitlocker" target="_blank">https://github.com/elceef/bitlocker</a><br/>
+			<pre>
+	This plugin finds and extracts Full Volume Encryption Key (FVEK) from memory dumps and/or hibernation 
+	files. This allows rapid unlocking of systems that had BitLocker encrypted volumes mounted at the time 
+	of acquisition.
+
+	Raw HDD image:
+	1) Determine partition layout and identify BitLocker volume:
+</pre>
+			<pre class="small">
+	  fdisk -l john_win7_x64.dd
+	  Disk john_win7_x64.dd: 298.1 GiB, 320072933376 bytes, 625142448 sectors
+	  Units: sectors of 1 * 512 = 512 bytes
+	  Sector size (logical/physical): 512 bytes / 512 bytes
+	  I/O size (minimum/optimal): 512 bytes / 512 bytes
+	  Disklabel type: dos
+	  Disk identifier: 0x51c47769
+
+	  Device 		Boot	     Start 		End 	Sectors		Size	 Id	 Type
+	  john_win7_x64.dd1 	*	      2048       1050623       1048576         512M  7 HPFS/NTFS/exFAT
+	  john_win7_x64.dd2 		   1050624   316475391   315424768       150.4G  7 HPFS/NTFS/exFAT
+	  john_win7_x64.dd3		 316475392   625137663   308662272       147.2G  7 HPFS/NTFS/exFAT
+</pre>
+			<pre>
+	The last one starting from sector 316475392 is BitLocker protected. It can be verified by lookig at the 
+	filesystem header. Volumes encrypted with BitLocker will have a different signature than the standard 
+	NTFS header. A BitLocker encrypted volume starts with the "-FVE-FS-" signature.
+</pre>
+			<pre class="small">
+	  hexdump -C -s $((512*316475392)) -n 16 john_win7_x64.dd
+	  25ba100000  eb 58 90 2d 46 56 45 2d  46 53 2d 00 02 08 00 00  |.X.-FVE-FS-.....| 
+</pre>
+			<pre>
+
+	2) Locate and convert hibernation file
+	Mount the system volume starting from sector 1050624 in read-only mode.
+</pre>
+			<pre class="small">
+	  sudo mount -o loop,ro,offset=$((512*1050624)) john_win7_x64.dd /mnt/1
+</pre>
+			<pre>
+	Convert hibernation file hiberfil.sys for further forensic analysis.
+</pre>
+			<pre class="small">
+	  vol -f /mnt/1/hiberfil.sys --profile Win7SP1x64 imagecopy -O hiberfil.raw
+</pre>
+			<pre>
+
+	3) Use the bitlocker plugin to extract FVEK
+	The plugin scans the memory image for BitLocker cryptographic allocations (memory pools) and extracts 
+	AES keys (FVEK).
+</pre>
+			<pre class="small">
+	  vol -f hiberfil.raw --profile Win7SP1x64 bitlocker
+	  Volatility Foundation Volatility Framework 2.5
+
+	  Address : 0xfa8009958c10
+	  Cipher  : AES-256
+	  FVEK    : d5b6e71adb0c2e2d38dafdcedade8fc11e8be631b9fed5b2ba5b51ba32a57cd1
+	  TWEAK   : 49f9ecd5ddffcae44cde7f7a578b9a3ca5e79087826779e147de89423ebdf3f3
+</pre>
+			<pre>
+
+	4) Decrypt and access the volume
+	Decrypt the volume on-the-fly using previously extracted FVEK.
+</pre>
+			<pre class="small">
+	  sudo bdemount -k 
+	  d5b6e71adb0c2e2d38dafdcedade8fc11e8be631b9fed5b2ba5b51ba32a57cd1:49f9ecd5ddffcae44cde7f7a578b9a3ca5e79087826779e147de89423ebdf3f3 -o $((512*316475392)) john_win7_x64.dd /crypt/1
+</pre>
+			<pre>
+	Finally mount and access the filesystem.
+</pre>
+			<pre class="small">
+	  sudo mount -o loop,ro /crypt/1/bde1 /mnt/2
+	  ls /mnt/2
+	  CONFIDENTIAL
+</pre>
+		</div>
+	</body>
+</html>
