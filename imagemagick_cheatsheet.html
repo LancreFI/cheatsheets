@@ -1,106 +1,124 @@
-
 <html>
 	<head>
 		<style>
-			.topic
-			{
-				border: 2px solid #000000;
-				font-size: 18px;
-				font-family: Arial;
-				font-weight: bold;
-				color: #000000;
-				background-color: rgba(0, 0, 0, 0.6);
-			}
+                        .topic
+                        {
+                                border: 2px solid #000000;
+                                font-size: 14px;
+                                font-family: Arial;
+                                font-weight: bold;
+                                color: #000000;
+                                background-color: rgba(0, 0, 0, 0.6);
+                        }
 
-			.terminal
-			{
-				border-color: #000000;
-				border-width: 0 2px 2px 2px;
-				font-size: 14px;
-				font-family: Terminal;
-				color: #00FF00;
-				background-color: rgba(0, 0, 0, 0.8);
-			}
+                        .terminal
+                        {
+                                border-color: #000000;
+                                border-width: 0 2px 2px 2px;
+                                font-size: 14px;
+                                font-family: monospace;
+                                color: #00FF00;
+                                background-color: rgba(0, 0, 0, 0.8);
+                        }
+
+                        pre
+                        {
+                                margin: 0;
+                                padding: 0;
+                                line-height: normal;
+                                font-family: monospace;
+                                font-size: 14px;
+                        }
+
+                        .small
+                        {
+                                font-size: 12px;
+                                background-color: #000000;
+                                color: #FFFFFF;
+                                font-weight: semibold;
+                                font-family: monospace;
+                        }
 		</style>
 	</head>
 	<body>
-		<div class="topic">Quick basic command recap</div>
+		<div class="topic"><h4>Quick basic command recap</h4></div>
 		<div class="terminal">
-			convert info &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# show info for convert</br>
-			-resize 100x40<br/>
-			-crop 40x30+10+10 &nbsp; &nbsp; # (width)x(height)+(x)+y</br>
-			-crop 40x30-10-10 &nbsp; &nbsp; &nbsp; &nbsp;# (width)x(height)+(x)+y</br>
-			-flip &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # vertical</br>
-			-flop &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# horizontal</br>
-			-transpose &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# flip vertical + rotate 90deg</br>
-			-transverse &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # flip horizontal + rotate 270deg</br>
-			-trim &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # trim image edges</br>
-			-rotate 90
+			<pre>
+ convert info 		# show info for convert
+ -resize 100x40
+ -crop 40x30+10+10 	# (width)x(height)+(x)+y
+ -crop 40x30-10-10 	# (width)x(height)+(x)+y
+ -flip 			# vertical
+ -flop 			# horizontal
+ -transpose 		# flip vertical + rotate 90deg
+ -transverse 		# flip horizontal + rotate 270deg
+ -trim 			# trim image edges
+ -rotate 90
+</pre>
 		</div>
-
+		<br/>
 		<div class="topic">File resize</div>
-		<div class="terminal">mogrify -define jpeg:extent=5100kb *.png</div>
-
+		<div class="small">&nbsp;mogrify -define jpeg:extent=5100kb *.png</div>
+		<br/>
 		<div class="topic">Resize all JPEGs in the current folder</div>
-		<div class="terminal"><b>All JPEGs in the current folder to 760px width, preserve aspect ratio:</b> mogrify -resize 760x *.jpg</div>
-		<div class="terminal"><b>All JPEGs in the current folder to 750x750:</b> mogrify -resize 750x750\! *.jpg</div>
-		<div class="terminal"><b>To resize a rotated 1080x720 image, you need to use the area as resize parameter (1080x720=777600):</b> mogrify -resize 777600@ -auto-orient -path conv *JPG</div>
-
+		<div class="terminal">All JPEGs in the current folder to 760px width, preserve aspect ratio:<pre class="small"> mogrify -resize 760x *.jpg</pre></div>
+		<div class="terminal">All JPEGs in the current folder to 750x750:<pre class="small"> mogrify -resize 750x750\! *.jpg</pre></div>
+		<div class="terminal">To resize a rotated 1080x720 image, you need to use the area as resize parameter (1080x720=777600):<pre class="small"> mogrify -resize 777600@ -auto-orient -path conv *JPG</pre></div>
+		<br/>
 		<div class="topic">Resize to fit</div>
-		<div class="terminal">convert input.jpg -resize 80x80^ -gravity center -extent 80x80 icon.png</div>
-
-		<div class="topic">Crop the bottom 20% of all images in the current folder (1) or basic crop (2)</div>
-		<div class="terminal">mogrify -gravity north -crop 100x80% +repage *.jpg</div>
-		<div class="terminal">convert orgfilename.jpg -crop 128Ã—128+50+50 cropped.jpg</div>
-
+		<div class="small">&nbsp;convert input.jpg -resize 80x80^ -gravity center -extent 80x80 icon.png</div>
+		<br/>
+		<div class="topic">Cropping</div>
+		<div class="terminal">Crop the bottom 20% of all images in the current folder:<pre class="small"> mogrify -gravity north -crop 100x80% +repage *.jpg</pre></div>
+		<div class="terminal">Basic cropping:<pre class="small"> convert orgfilename.jpg -crop 128Ã—128+50+50 cropped.jpg</pre></div>
+		<br/>
 		<div class="topic">Invert colours/negate</div>
-		<div class="terminal">mogrify -negate *.png</div>
-
-		<div class="topic">Make grayscale basic (1) and script (2)</div>
-		<div class="terminal">convert flash-sale.png -colorspace Gray flash-sale.png</div>
-		<div class="terminal">for file in Data/Training/Images/cancer_subset00/*.png; do convert $file  -colorspace Gray $file;done</div>
-
+		<div class="small">&nbsp;mogrify -negate *.png</div>
+		<br/>
+		<div class="topic">Making grayscale</div>
+		<div class="terminal">Make grayscale basic:<pre class="small"> convert flash-sale.png -colorspace Gray flash-sale.png</pre></div>
+		<div class="terminal">Make grayscale with a script:<pre class="small"> for file in Data/Training/Images/cancer_subset00/*.png; do convert $file  -colorspace Gray $file;done</pre></div>
+		</br>
 		<div class="topic">Make RGB</div>
-		<div class="terminal">mogrify -type TrueColorMatte -define png:color-type=6  /Volumes/UUI/labels/normal/*.png</div>
-
+		<div class="small">&nbsp;mogrify -type TrueColorMatte -define png:color-type=6  /Volumes/UUI/labels/normal/*.png</div>
+		<br/>
 		<div class="topic">Put image in centre of larger image</div>
-		<div class="terminal">convert codecentric.png -resize 600x -size 1280x720 xc:white +swap -gravity center -composite output/codecentric.png</div>
-
-		<div class="topic">Make a PDF (1) or PDF too big when converting from JPG</div>
-		<div class="terminal">convert *.jpg hello.pdf</div>
-		<div class="terminal">convert -quality 60 *.jpg output.pdf</div>
-
+		<div class="small">&nbsp;convert codecentric.png -resize 600x -size 1280x720 xc:white +swap -gravity center -composite output/codecentric.png</div>
+		<br/>
+		<div class="topic">PDF from JPG</div>
+		<div class="terminal">Make a PDF:<pre class="small"> convert *.jpg hello.pdf</pre></div>
+		<div class="terminal">If converted PDF is too big, lower the quality:<pre class="small">convert -quality 60 *.jpg output.pdf</pre></div>
+		<br/>
 		<div class="topic">Convert all images to another format</div>
-		<div class="terminal">mogrify -format jpg -quality 85 *.png</div>
-		<div class="terminal">mogrify -background black -format png -depth 8  Data/Training/Images/cancer_subset00/*.tiff</div>
-
+		<div class="small">&nbsp;mogrify -format jpg -quality 85 *.png</div>
+		<div class="small">&nbsp;mogrify -background black -format png -depth 8  Data/Training/Images/cancer_subset00/*.tiff</div>
+		<br/>
 		<div class="topic">SVG to PNG</div>
-		<div class="terminal">mogrify -background black -format png -depth 8 Data/Training/Labels/cancer_subset00/*.svg</div>
-
+		<div class="small">&nbsp;mogrify -background black -format png -depth 8 Data/Training/Labels/cancer_subset00/*.svg</div>
+		<br/>
 		<div class="topic">Transparent background</div>
-		<div class="terminal">convert input-with-solid-white-background-color.jpg -transparent white output-transparent.jpg</div>
-		<div class="terminal">convert -resize 100% -transparent -strip -quality 90 input.png out.png</div>
-
+		<div class="small">&nbsp;convert input-with-solid-white-background-color.jpg -transparent white output-transparent.jpg</div>
+		<div class="small">&nbsp;convert -resize 100% -transparent -strip -quality 90 input.png out.png</div>
+		<br/>
 		<div class="topic">Get image size, channel, alpha, depth, DPI</div>
-		<div class="terminal">identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg</div>
-
+		<div class="small">&nbsp;identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg</div>
+		</br>
 		<div class="topic">Watermarking with text</div>
-		<div class="terminal">convert orgfilename.jpg -font Arial -pointsize 20 -draw "gravity south fill black text 0,12 'Watermark' fill white text 1,11 'Watermark' " wmark_text_drawn.jpg</div>
-
+		<div class="small">&nbsp;convert orgfilename.jpg -font Arial -pointsize 20 -draw "gravity south fill black text 0,12 'Watermark' fill white text 1,11 'Watermark' " wmark_text_drawn.jpg</div>
+		<br/>
 		<div class="topic">Compare files</div>
-		<div class="terminal">compare image1 image2 -compose src diff.png</div>
-		<div class="terminal">compare PC-200617-1248-30.pdf PC-270717-1119-53.pdf diff.pdf</div>
-		<div class="terminal"><b>Compare images using a metric (can be mse, psnr and more):</b> compare -verbose -metric mse 1.jpg 2.jpg difference.png</div>
-
+		<div class="small">&nbsp;compare image1 image2 -compose src diff.png</div>
+		<div class="small">&nbsp;compare PC-200617-1248-30.pdf PC-270717-1119-53.pdf diff.pdf</div>
+		<div class="terminal">Compare images using a metric (can be mse, psnr and more):<pre class="small"> compare -verbose -metric mse 1.jpg 2.jpg difference.png</pre></div>
+		<br/>
 		<div class="topic">Append two images</div>
-		<div class="terminal">convert image1.jpg image2.jpg -append result.jpg</div>
-		<div class="terminal"><b>Compose two images together using a mask (stencil)</b>: convert -size 512x256 tile:img.jpg  tile:img2.jpg mask.jpg -composite result.jpg</div>
-
+		<div class="small">&nbsp;convert image1.jpg image2.jpg -append result.jpg</div>
+		<div class="terminal">Compose two images together using a mask (stencil):<pre class="small2> convert -size 512x256 tile:img.jpg  tile:img2.jpg mask.jpg -composite result.jpg</pre></div>
+		<br/>
 		<div class="topic">Show image details</div>
-		<div class="terminal">identify image.jpg</div>
-
+		<div class="small">&nbsp;identify image.jpg</div>
+		<br/>
 		<div class="topic">Neat tricks</div>
-		<div class="terminal"><b>Edge+negate</b>: convert DSC_0027.JPG -edge 3 -negate edge3+negate.jpg</div>
+		<div class="terminal">Edge+negate:<pre class="small"> convert DSC_0027.JPG -edge 3 -negate edge3+negate.jpg</pre></div>
 	</body>
 </html>
-
