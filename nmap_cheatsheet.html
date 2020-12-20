@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+                        .topic
+                        {
+                                border: 2px solid #000000;
+                                font-size: 14px;
+                                font-family: Arial;
+                                font-weight: bold;
+                                color: #000000;
+                                background-color: rgba(0, 0, 0, 0.6);
+                        }
+
+                        .terminal
+                        {
+                                border-color: #000000;
+                                border-width: 0 2px 2px 2px;
+                                font-size: 14px;
+                                font-family: monospace;
+                                color: #00FF00;
+                                background-color: rgba(0, 0, 0, 0.8);
+                        }
+
+                        pre
+                        {
+                                margin: 0;
+                                padding: 0;
+                                line-height: normal;
+                                font-family: monospace;
+                                font-size: 14px;
+                        }
+
+                        .small
+                        {
+                                font-size: 12px;
+                                background-color: #000000;
+                                color: #FFFFFF;
+                                font-weight: semibold;
+                                font-family: monospace;
+                        }
+		</style>
+	</head>
+	<body>
+		<div class="topic">Nmap Target Selection</div>
+		<div class="terminal"><pre>Scan a single IP		nmap 192.168.1.1</pre></div>
+		<div class="terminal"><pre>Scan a host			nmap www.testhostname.com</pre></div>
+		<div class="terminal"><pre>Scan a range of IPs		nmap 192.168.1.1-20</pre></div>
+		<div class="terminal"><pre>Scan a subnet			nmap 192.168.1.0/24</pre></div>
+		<div class="terminal"><pre>Scan targets from a text file	nmap -iL list-of-ips.txt</pre></div>
+		<div class="small">These are all default scans, which will scan 1000 TCP ports. Host discovery will take place.</div>
+		</br>
+		<div class="topic">Nmap Port Selection</div>
+		<div class="terminal"><pre>Scan a single Port 			nmap -p 22 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan a range of ports 			nmap -p 1-100 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan 100 most common ports (Fast) 	nmap -F 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan all 65535 ports 			nmap -p- 192.168.1.1</pre></div>
+		</br>
+		<div class="topic">Nmap Port Scan types</div>
+                <div class="terminal"><pre>Scan using TCP connect 			nmap -sT 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan using TCP SYN scan (default)	 nmap -sS 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan UDP ports 				nmap -sU -p 123,161,162 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan selected ports - ignore discovery 	nmap -Pn -F 192.168.1.1</pre></div>
+		<div class="small">Privileged access is required to perform the default SYN scans. If privileges are insufficient a TCP connect scan will be used. A TCP connect requires a full TCP connection to be established and therefore is a slower scan. Ignoring discovery is often required as many firewalls or hosts will not respond to PING, so could be missed unless you select the -Pn parameter. Of course this can make scan times much longer as you could end up sending scan probes to hosts that are not there.</div>
+		</br>
+		<div class="topic">Service and OS Detection</div>
+                <div class="terminal"><pre>Detect OS and Services 			nmap -A 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Standard service detection 		nmap -sV 192.168.1.1</pre></div>
+                <div class="terminal"><pre>More aggressive Service Detection 	nmap -sV --version-intensity 5 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Lighter banner grabbing detection 	nmap -sV --version-intensity 0 192.168.1.1</pre></div>
+		<div class="small">Service and OS detection rely on different methods to determine the operating system or service running on a particular port. The more aggressive service detection is often helpful if there are services running on unusual ports. On the other hand the lighter version of the service will be much faster as it does not really attempt to detect the service simply grabbing the banner of the open service.</div>
+		</br>
+		<div class="topic">Nmap Output Formats</div>
+                <div class="terminal"><pre>Save default output to file 		nmap -oN outputfile.txt 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Save results as XML 			nmap -oX outputfile.xml 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Save results in a format for grep 	nmap -oG outputfile.txt 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Save in all formats 			nmap -oA outputfile 192.168.1.1</pre></div>
+		<div class="small">The default format could also be saved to a file using a simple file redirect command > file. Using the -oN option allows the results to be saved but also can be monitored in the terminal as the scan is under way.</div>
+		</br>
+		<div class="topic">Nmap Output to CSV</div>
+		<div class="small">Nmap by default has no csv output format. Use the XML output to extract the relevant fields into csv with python.</div>
+		</br>
+		<div class="topic">Digging deeper with NSE Scripts</div>
+                <div class="terminal"><pre>Scan using default safe scripts 	nmap -sV -sC 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Get help for a script 			nmap --script-help=ssl-heartbleed</pre></div>
+                <div class="terminal"><pre>Scan using a specific NSE script 	nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1</pre></div>
+                <div class="terminal"><pre>Scan with a set of scripts 		nmap -sV --script=smb* 192.168.1.1</pre></div>
+		</br>
+		<div clas="topic">A scan to search for DDOS reflection UDP services</div>
+                <div class="terminal"><pre>Scan for UDP DDOS reflectors 	nmap –sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr 192.168.1.0/24</pre></div>
+		<div class="small">UDP based DDOS reflection attacks are a common problem that network defenders come up against. This is a handy Nmap command that will scan a target list for systems with open UDP services that allow these attacks to take place. Full details of the command and the background can be found on the Sans Institute Blog where it was first posted.</div>
+		</br>
+                <div class="topic>>HTTP Service Information</div>
+                <div class="terminal"><pre>Gather page titles from HTTP services 	nmap --script=http-title 192.168.1.0/24</pre></div>
+                <div class="terminal"><pre>Get HTTP headers of web services 	nmap --script=http-headers 192.168.1.0/24</pre></div>
+                <div class="terminal"><pre>Find web apps from known paths 		nmap --script=http-enum 192.168.1.0/24</pre></div>
+		<div class="small">There are many HTTP information gathering scripts, here are a few that are simple but helpful when examining larger networks. Helps in quickly identifying what the HTTP service that is running on the open port. Note the http-enum script is particularly noisy. It is similar to Nikto in that it will attempt to enumerate known paths of web applications and scripts. This will inevitably generated hundreds of 404 HTTP responses in the web server error and access logs.</div>
+		</br>
+		<div class="topic">Detect Heartbleed SSL Vulnerability</div>
+                <div class="terminal"><pre>Heartbleed Testing 	nmap -sV -p 443 --script=ssl-heartbleed 192.168.1.0/24</pre></div>
+		<div class="small">Heartbleed detection is one of the available SSL scripts. It will detect the presence of the well known Heartbleed vulnerability in SSL services. Specify alternative ports to test SSL on mail and other protocols (Requires Nmap 6.46).</div>
+		</br>
+                <div class="topic">IP Address information</div>
+                <div class="terminal"><pre>Find Information about IP address 	nmap --script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24</pre></div>
+		<div class="small">Gather information related to the IP address and netblock owner of the IP address. Uses ASN, whois and geoip location lookups. See the IP Tools for more information and similar IP address and DNS lookups.</div>
+	</body>
+</html>
