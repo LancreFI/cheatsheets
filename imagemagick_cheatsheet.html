@@ -99,6 +99,7 @@
 		<div class="topic">Transparent background</div>
 		<div class="small">&nbsp;convert input-with-solid-white-background-color.jpg -transparent white output-transparent.jpg</div>
 		<div class="small">&nbsp;convert -resize 100% -transparent -strip -quality 90 input.png out.png</div>
+		<div class="terminal">The fuzz percentage allows for a not fully constant background color, as long as the foreground doesn't fall into the fuzz value:<pre class="small">convert input.jpg -fuzz XX% -fill none -draw "matte 0,0 floodfill" PNG32:output.png</pre></div>
 		<br/>
 		<div class="topic">Get image size, channel, alpha, depth, DPI</div>
 		<div class="small">&nbsp;identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg</div>
