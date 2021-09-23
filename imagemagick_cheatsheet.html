@@ -87,7 +87,7 @@
 		<br/>
 		<div class="topic">PDF from JPG</div>
 		<div class="terminal">Make a PDF:<pre class="small"> convert *.jpg hello.pdf</pre></div>
-		<div class="terminal">If converted PDF is too big, lower the quality:<pre class="small">convert -quality 60 *.jpg output.pdf</pre></div>
+		<div class="terminal">If converted PDF is too big, lower the quality:<pre class="small"> convert -quality 60 *.jpg output.pdf</pre></div>
 		<br/>
 		<div class="topic">Convert all images to another format</div>
 		<div class="small">&nbsp;mogrify -format jpg -quality 85 *.png</div>
@@ -99,7 +99,7 @@
 		<div class="topic">Transparent background</div>
 		<div class="small">&nbsp;convert input-with-solid-white-background-color.jpg -transparent white output-transparent.jpg</div>
 		<div class="small">&nbsp;convert -resize 100% -transparent -strip -quality 90 input.png out.png</div>
-		<div class="terminal">The fuzz percentage allows for a not fully constant background color, as long as the foreground doesn't fall into the fuzz value:<pre class="small">convert input.jpg -fuzz XX% -fill none -draw "matte 0,0 floodfill" PNG32:output.png</pre></div>
+		<div class="terminal">The fuzz percentage allows for a not fully constant background color, as long as the foreground doesn't fall into the fuzz value:<pre class="small"> convert input.jpg -fuzz XX% -fill none -draw "matte 0,0 floodfill" PNG32:output.png</pre></div>
 		<br/>
 		<div class="topic">Get image size, channel, alpha, depth, DPI</div>
 		<div class="small">&nbsp;identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg</div>
@@ -114,7 +114,7 @@
 		<br/>
 		<div class="topic">Append two images</div>
 		<div class="small">&nbsp;convert image1.jpg image2.jpg -append result.jpg</div>
-		<div class="terminal">Compose two images together using a mask (stencil):<pre class="small2> convert -size 512x256 tile:img.jpg  tile:img2.jpg mask.jpg -composite result.jpg</pre></div>
+		<div class="terminal">Compose two images together using a mask (stencil):<pre class="small"> convert -size 512x256 tile:img.jpg  tile:img2.jpg mask.jpg -composite result.jpg</pre></div>
 		<br/>
 		<div class="topic">Show image details</div>
 		<div class="small">&nbsp;identify image.jpg</div>
