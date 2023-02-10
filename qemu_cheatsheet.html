@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<style>
+                        .topic
+                        {
+                                border: 2px solid #000000;
+                                font-size: 14px;
+                                font-family: Arial;
+                                font-weight: bold;
+                                color: #000000;
+                                background-color: rgba(0, 0, 0, 0.6);
+                        }
+
+                        .terminal
+                        {
+                                border-color: #000000;
+                                border-width: 0 2px 2px 2px;
+                                font-size: 14px;
+                                font-family: monospace;
+                                color: #00FF00;
+                                background-color: rgba(0, 0, 0, 0.8);
+                        }
+
+                        pre
+                        {
+                                margin: 0;
+                                padding: 0;
+                                line-height: normal;
+                                font-family: monospace;
+                                font-size: 14px;
+                        }
+
+                        .small
+                        {
+                                font-size: 12px;
+                                background-color: #000000;
+                                color: #FFFFFF;
+                                font-weight: semibold;
+                                font-family: monospace;
+                        }
+		</style>
+	</head>
+	<body>
+		<div class="topic">Disk image information</div>
+		<div class="small"> qemu-img info disk.img</div>
+		<br/>
+		<div class="topic">Create raw disk image</div>
+		<div class="small"> qemu-img create disk.img 80G</div>
+		<br/>
+		<div class="topic">Start with disk only</div>
+		<div class="small">&nbsp;qemu-system-x86_64 -hda disk.img</div>
+		<br/>
+		<div class="topic">Starting the emulator with CD-image</div>
+		<div class="small"> qemu-system-x86_64 -hda disk.img -cdrom cd.iso -boot d</div>
+		<br/>
+		<div class="topic">Networking disabled</div>
+		<div class="small">&nbsp;qemu-system-x86_64 -hda disk.img -net none</div>
+		<br/>
+		<div class="topic">Set memory size</div>
+		<div class="small"> qemu-system-x86_64 -m 6G -hda disk.img</div>
+		</br>
+		<div class="topic">Enable KVM</div>
+		<div class="small">&nbsp;qemu-system-x86_64 -hda disk.img -enable-kvm</div>
+		<br/>
+		<div class="topic">Assing more than one CPU</div>
+		<div class="small">&nbsp;qemu-system-x86_64 -hda disk.img -smp &lt;CPU COUNT&gt;</div>
+		<br/>
+		<div class="topic">Share folder from host</div>
+		<div class="small"> sudo apt install samba; qemu-system-x86_64 -hda disk.img -net nic -net user,smb=/tmp/bar</div>
+		<br/>
+		<div class="topic">Shortcuts</div>
+		<div class="small">&nbsp;Ctrl-Alt   == toggle moue and keyboard</div>
+		<div class="small">&nbsp;Ctrl-Alt-f == toggle full screen</div>
+    <div class="small">&nbsp;Ctrl-Alt-+ == enlarge screen size</div>
+    <div class="small">&nbsp;Ctrl-Alt-+ == decrese screen size</div>
+    <div class="small">&nbsp;Ctrl-Alt-u == restore screen size</div>
+    <div class="small">&nbsp;Ctrl-Alt-1 == show target display</div>
+    <div class="small">&nbsp;Ctrl-Alt-2 == show monitor</div>
+    <div class="small">&nbsp;Ctrl-Alt-3 == show serial</div>
+	</body>
+</html>
