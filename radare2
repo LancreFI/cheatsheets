@@ -1,0 +1,12 @@
+r2 -e bin.cache=true -d ./binary  ---  debug session
+r2 -w ./binary                    ---  a session where you can write changes to the binary (don't use any cached mode)
+aaaa                              ---  automatic analysis
+e asm.pseudo=true                 ---  make it more readable
+s main                            ---  go to main
+pdf                               ---  show "code" at current location
+db 0x123123                       ---  set breakpoint to 0x123123
+dc                                ---  run
+s 0x123123                        ---  go to 0x123123
+px                                ---  show hex content
+wv 0x12345678                     ---  write 78564312 to current position
+q                                 ---  exit (and save)
