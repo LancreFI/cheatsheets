@@ -1,0 +1,39 @@
+write protect USB on Linux
+sudo hdparm -r1 /dev/sdx
+
+do a dd dump of a device:
+dd if=/dev/sdb of=/usb_dump.dd
+
+Mount DD image:
+sudo mkdir /path/to/dir/
+mount -o loop example.img /path/to/dir/
+umount /path/to/dir
+
+On Windows:
+Enable write protection, create a .reg file containing:
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies]
+"WriteProtect"=dword:00000001
+
+Disable write protection, create a .reg file containing:
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies]
+"WriteProtect"=dword:00000000
+
+Mount images using for example OSFMount (https://www.osforensics.com/tools/mount-disk-images.html)
+
+----
+MOBILE
+
+For KaiOS devices, enable ADB debugging: 
+ - Qualcomm: *#*#33284#*#*
+ - Spreadtrum: *#*#33284#*#* and/or *#*#0574#*#*
+
+After issuing adb backup, if asked, no need to react if the phone doesn't ask for a confirmation of operation:
+"Now unlock your device and confirm the backup operation."
+
+Pull a backup:
+ - adb pull /dev/block/mmcb1k0 mmcb1k0.img
+
+Do a backup on the device to an sdcard:
+  Backup on Qualcomm: dd if=/dev/block/bootdevice/by-name/PARTITION of=/sdcard/PARTITION.img bs=2048
+  Backup on Spreadtrum: dd if=/dev/block/platform/soc/by-name/PARTITION of=/sdcard/PARTITION.img bs=2048
+----
