@@ -18,8 +18,9 @@ sf                                ---  seek to next function
 ps                                ---  show strings
 pu                                ---  show unicode string
 px                                ---  show hex content
-n                                 ---  jump to next flag
-N                                 ---  jump to previous flag
+n (in visual mode v)              ---  jump to next flag
+N (in visual mode v)              ---  jump to previous flag
+: (in visual mode v)              ---  radare cli
 iE                                ---  show exports
 ii                                ---  show imports
 iI                                ---  info about the binary
