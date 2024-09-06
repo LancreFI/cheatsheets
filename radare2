@@ -5,12 +5,32 @@ e asm.pseudo=true                 ---  make it more readable
 s main                            ---  go to main
 pdf                               ---  show "code" at current location
 db 0x123123                       ---  set breakpoint to 0x123123
-dc                                ---  run
-s 0x123123                        ---  go to 0x123123
+db -0x123123                      ---  remove breakpoint 0x123123
+dc                                ---  continue execution
+dr                                ---  show register
+ds                                ---  step
+dso                               ---  step over
+s 0x123123                        ---  seek to 0x123123
+-s                                ---  undo seek
+sC giigeli                        ---  seek to comment matching "giigeli"
+sr 0x123123                       ---  seek to register 0x123123
+sf                                ---  seek to next function
 ps                                ---  show strings
 pu                                ---  show unicode string
 px                                ---  show hex content
+n                                 ---  jump to next flag
+N                                 ---  jump to previous flag
+iE                                ---  show exports
+ii                                ---  show imports
+iI                                ---  info about the binary
+im                                ---  show main address
 show strings in data sections     ---  iz
 show all strings                  ---  izz
 wv 0x12345678                     ---  write 78564312 to current position
 q                                 ---  exit (and save)
+=h 1234                           ---  start webserver on port 1234
+=h& 1234                          ---  start webserver in background on port 1234
+=h-                               ---  stop background webserver 
+=H 1234                           ---  start webserver on port 1234 and open browser
+=H& 1234                          ---  start webserver in background on port 1234 and open browser
+| less                            ---  pipe to command (less in this example)
