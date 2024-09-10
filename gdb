@@ -14,6 +14,7 @@ next                                    == go to next instruction, but don't div
 finish                                  == continue until the current function returns
 continue                                == continue the normal execution
 print/format <register>                 == print the content of a named register, usually $esp (stack pointer), $ebp (frame pointer) and $eip (instruction pointer)
+                                        Format:
                                         a pointer
                                         c read as integer, print as character
                                         d integer, signed decimal
