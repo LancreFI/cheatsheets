@@ -5,10 +5,10 @@ set args <arguments>                    == set arguments to pass to the program
 run                                     == run the program being debugged
 kill                                    == kill the running program
 break 0x1234                            == set a new breakpoint at 0x1234
-delete 0x1234                           == delete the breakpoint at 0x1234
+delete n                                == delete the n'th breakpoint
 clear                                   == clear all breakpoints
-enable 0x1234                           == enable the disabled breakpoint at 0x1234
-disable 0x1234                          == disable the breakpoint 0x1234
+enable n                                == enable the disabled breakpoint number n
+disable n                               == disable the n'th breakpoint
 step                                    == go to the next instruction, divihg into functions
 next                                    == go to next instruction, but don't dive
 finish                                  == continue until the current function returns
